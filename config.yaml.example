@@ -1,0 +1,71 @@
+slack:
+  app_token: xapp-YOUR-APP-TOKEN
+  bot_token: xoxb-YOUR-BOT-TOKEN
+gemini:
+  api_key: YOUR-GEMINI-API-KEY
+  model: gemini-2.5-flash
+daou:
+  url: https://gw.suresofttech.com/app/asset/27/list/reservation
+google_calendar:
+  enabled: true
+  credentials_file: credentials.json
+  token_file: token.json
+  calendar_id: YOUR-CALENDAR-ID@group.calendar.google.com
+defaults:
+  attendees: '-'
+  timeout: 30
+  max_retries: 3
+  headless: true
+room_priority:
+- tier: 1
+  label: 11층
+  floor_id: 27
+  rooms:
+  - id: 11-3
+    name: 회의실 11-3
+    capacity: 10
+    row_key: 85
+  - id: 11-4
+    name: 회의실 11-4
+    capacity: 8
+    row_key: 86
+  - id: 11-2
+    name: 회의실 11-2
+    capacity: 6
+    row_key: 84
+  - id: 11-1
+    name: 회의실 11-1
+    capacity: 6
+    row_key: 83
+- tier: 2
+  label: 10층
+  floor_id: 26
+  rooms:
+  - id: 10-3
+    name: 회의실 10-3
+    capacity: 5
+    row_key: 78
+  - id: 10-4
+    name: 회의실 10-4
+    capacity: 5
+    row_key: 79
+  - id: 10-6
+    name: 회의실 10-6
+    capacity: 5
+    row_key: 80
+- tier: 3
+  label: 9층
+  floor_id: 25
+  rooms:
+  - id: 9-1
+    name: 회의실 9-1
+    capacity: 4
+    row_key: 72
+  - id: 9-3
+    name: 회의실 9-3
+    capacity: 4
+    row_key: 74
+  - id: 9-4
+    name: 회의실 9-4
+    capacity: 4
+    row_key: 75

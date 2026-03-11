@@ -1,0 +1,49 @@
+{
+  "display_information": {
+    "name": "Room Agent",
+    "description": "Slack /res 명령어로 다우오피스 회의실 예약을 자동화하는 봇",
+    "background_color": "#2196F3"
+  },
+  "features": {
+    "app_home": {
+      "home_tab_enabled": false,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": false
+    },
+    "bot_user": {
+      "display_name": "Room Agent",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/res",
+        "description": "회의실 예약",
+        "usage_hint": "내일 2시 팀미팅",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "app_mentions:read",
+        "chat:write",
+        "commands",
+        "im:write"
+      ]
+    }
+  },
+  "settings": {
+    "event_subscriptions": {
+      "bot_events": [
+        "app_mention"
+      ]
+    },
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  }
+}

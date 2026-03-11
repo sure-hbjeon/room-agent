@@ -1,0 +1,23 @@
+# 민감한 설정/인증 파일
+config.yaml
+cookies.json
+credentials.json
+token.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# 로그
+logs/
+
+# 디버그
+debug/
+
+# IDE
+.vscode/
+.idea/
