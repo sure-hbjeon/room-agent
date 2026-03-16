@@ -13,6 +13,7 @@ import yaml
 class SlackConfig:
     app_token: str
     bot_token: str
+    command: str = "/qw"
 
 
 @dataclass
@@ -115,9 +116,18 @@ def load_config(config_path: Optional[str] = None) -> Config:
         data = yaml.safe_load(f)
 
     # Slack 설정
+    slack_command = data['slack'].get('command', '').strip()
+    if not slack_command:
+        raise ValueError(
+            "config.yaml의 slack.command가 비어 있습니다.\n"
+            "  1) config.yaml: slack.command 항목에 슬래시 커맨드를 입력하세요. (예: /qw)\n"
+            "  2) slack-app-manifest.json: slash_commands[].command 항목도 동일하게 채우세요."
+        )
+
     slack = SlackConfig(
         app_token=data['slack']['app_token'],
         bot_token=data['slack']['bot_token'],
+        command=slack_command,
     )
 
     # Gemini 설정

@@ -1,6 +1,7 @@
 slack:
   app_token: xapp-YOUR-APP-TOKEN
   bot_token: xoxb-YOUR-BOT-TOKEN
+  command: /command
 gemini:
   api_key: YOUR-GEMINI-API-KEY
   model: gemini-2.5-flash

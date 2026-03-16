@@ -37,7 +37,7 @@ def create_app() -> App:
     _app = App(token=config.slack.bot_token)
 
     # 핸들러 등록
-    _app.command("/res")(handle_room_command)
+    _app.command(config.slack.command)(handle_room_command)
     _app.action(re.compile(r"select_room_.+"))(handle_room_selection)
     _app.action("calendar_checkbox")(handle_calendar_checkbox)
     _app.view("reservation_modal")(handle_reservation_modal)
@@ -55,9 +55,9 @@ def get_app() -> App:
 
 def handle_room_command(ack, command, client: WebClient, respond):
     """
-    /res 슬래시 명령어 처리
+    /qw 슬래시 명령어 처리
 
-    예: /res 내일 10~12 팀미팅
+    예: /qw 내일 10~12 팀미팅
     """
     ack()  # 3초 내 응답 필수
 
@@ -66,14 +66,14 @@ def handle_room_command(ack, command, client: WebClient, respond):
     channel_id = command["channel_id"]
     response_url = command["response_url"]
 
-    logger.info(f"[{user_id}] /res 명령: {user_input}")
+    logger.info(f"[{user_id}] /qw 명령: {user_input}")
 
     if not user_input:
         respond(
             text=(
                 "사용법:\n"
-                "• 예약: `/res 내일 10~12 팀미팅`\n"
-                "• 조회: `/res 내일 11시 빈 회의실`"
+                "• 예약: `/qw 내일 10~12 팀미팅`\n"
+                "• 조회: `/qw 내일 11시 빈 회의실`"
             ),
             response_type="ephemeral"
         )
@@ -110,7 +110,7 @@ def _process_room_command(
         except Exception as e:
             logger.error(f"파싱 실패: {e}")
             webhook.send(
-                text=f"입력을 이해할 수 없습니다. 다시 시도해주세요.\n예: `/res 내일 10~12 팀미팅`",
+                text=f"입력을 이해할 수 없습니다. 다시 시도해주세요.\n예: `/qw 내일 10~12 팀미팅`",
                 response_type="ephemeral"
             )
             return

@@ -44,7 +44,7 @@ manifest 없이 직접 설정하는 방법입니다.
 
 **Slash Command 등록:**
 - **Features > Slash Commands > Create New Command**
-  - Command: `/res`
+  - Command: `/qw`
   - Description: `회의실 예약`
   - Usage Hint: `내일 2시 팀미팅`
 
@@ -250,7 +250,7 @@ __pycache__/
 - [ ] `python login.py` 실행 (다우오피스 로그인)
 - [ ] `python google_auth.py` 실행 (Calendar 연동)
 - [ ] `python -m src.main` 실행 확인
-- [ ] Slack에서 `/res 테스트` 명령 테스트
+- [ ] Slack에서 `/qw 테스트` 명령 테스트
 
 ## 유지보수
 

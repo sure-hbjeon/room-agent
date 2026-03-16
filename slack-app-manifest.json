@@ -1,7 +1,7 @@
 {
   "display_information": {
     "name": "Room Agent",
-    "description": "Slack /res 명령어로 다우오피스 회의실 예약을 자동화하는 봇",
+    "description": "Slack 명령어로 다우오피스 회의실 예약을 자동화하는 봇",
     "background_color": "#2196F3"
   },
   "features": {
@@ -16,7 +16,7 @@
     },
     "slash_commands": [
       {
-        "command": "/res",
+        "command": "",
         "description": "회의실 예약",
         "usage_hint": "내일 2시 팀미팅",
         "should_escape": false
