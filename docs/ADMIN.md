@@ -107,7 +107,7 @@ defaults:
   max_retries: 3             # 재시도 횟수
   headless: true             # 브라우저 숨김 모드
 
-room_priority:               # 회의실 우선순위 (아래 참조)
+room_priority_file: "room_priority.yaml"  # 공유 회의실 우선순위 파일
 ```
 
 ### 회의실 설정
@@ -212,7 +212,7 @@ HttpError 403: insufficientPermissions
 ```
 회의실 11-3을 찾을 수 없습니다
 ```
-- `config.yaml`의 `row_key` 값 확인
+- `room_priority.yaml`의 `row_key` 값 확인
 - 다우오피스에서 회의실 구조가 변경되었을 수 있음
 
 ### 브라우저 디버깅

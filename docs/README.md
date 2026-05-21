@@ -251,7 +251,8 @@ room-agent/
 │   ├── daou_automation.py # 다우오피스 자동화
 │   ├── calendar_sync.py  # Google Calendar 연동
 │   └── config.py         # 설정 로드
-├── config.yaml           # 설정 파일
+├── config.yaml           # 로컬 전용 설정 파일
+├── room_priority.yaml    # 공유 회의실 우선순위 설정
 ├── cookies.json          # 다우오피스 로그인 쿠키
 ├── credentials.json      # Google OAuth 자격증명
 ├── login.py              # 로그인 스크립트

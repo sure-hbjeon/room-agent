@@ -9,6 +9,9 @@ from typing import Optional
 import yaml
 
 
+ROOM_PRIORITY_FILENAME = "room_priority.yaml"
+
+
 @dataclass
 class SlackConfig:
     app_token: str
@@ -102,6 +105,39 @@ def get_base_path() -> Path:
         return Path(__file__).parent.parent
 
 
+def _load_room_priority_data(config_data: dict, config_path: Path) -> list[dict]:
+    room_priority_file = config_data.get('room_priority_file', ROOM_PRIORITY_FILENAME)
+    room_priority_path = config_path.parent / room_priority_file
+
+    if room_priority_path.exists():
+        with open(room_priority_path, 'r', encoding='utf-8') as f:
+            room_priority_data = yaml.safe_load(f) or {}
+        return room_priority_data.get('room_priority', [])
+
+    return config_data.get('room_priority', [])
+
+
+def _parse_room_priority(room_priority_data: list[dict]) -> list[RoomTier]:
+    room_priority = []
+    for tier_data in room_priority_data:
+        rooms = [
+            Room(
+                id=r['id'],
+                name=r['name'],
+                capacity=r['capacity'],
+                row_key=r.get('row_key', 0),
+            )
+            for r in tier_data.get('rooms', [])
+        ]
+        room_priority.append(RoomTier(
+            tier=tier_data['tier'],
+            label=tier_data['label'],
+            floor_id=tier_data.get('floor_id', 0),
+            rooms=rooms,
+        ))
+    return room_priority
+
+
 def load_config(config_path: Optional[str] = None) -> Config:
     """설정 파일 로드"""
     if config_path is None:
@@ -160,23 +196,7 @@ def load_config(config_path: Optional[str] = None) -> Config:
     )
 
     # 회의실 우선순위
-    room_priority = []
-    for tier_data in data.get('room_priority', []):
-        rooms = [
-            Room(
-                id=r['id'],
-                name=r['name'],
-                capacity=r['capacity'],
-                row_key=r.get('row_key', 0),
-            )
-            for r in tier_data.get('rooms', [])
-        ]
-        room_priority.append(RoomTier(
-            tier=tier_data['tier'],
-            label=tier_data['label'],
-            floor_id=tier_data.get('floor_id', 0),
-            rooms=rooms,
-        ))
+    room_priority = _parse_room_priority(_load_room_priority_data(data, config_path))
 
     return Config(
         slack=slack,

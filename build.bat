@@ -18,6 +18,7 @@ REM 필요한 파일 복사
 echo 배포 파일 복사 중...
 if not exist dist\room-agent mkdir dist\room-agent
 copy config.yaml dist\room-agent\
+copy room_priority.yaml dist\room-agent\
 if exist credentials.json copy credentials.json dist\room-agent\
 
 echo.

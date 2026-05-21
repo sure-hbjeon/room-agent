@@ -443,7 +443,7 @@ RRULE:FREQ=WEEKLY;BYDAY=MO;UNTIL=20260228T235959Z
 | 증상 | 원인 | 해결 |
 |------|------|------|
 | 로그인 페이지로 리다이렉트 | 쿠키 만료 | 자동 재로그인 동작 (DM 확인 후 브라우저에서 로그인) |
-| 회의실을 찾을 수 없음 | row_key 불일치 | config.yaml의 row_key 확인 |
+| 회의실을 찾을 수 없음 | row_key 불일치 | room_priority.yaml의 row_key 확인 |
 | Calendar 등록 안 됨 | 체크박스 해제 | 예약 모달에서 체크 |
 | 봇 응답 없음 | Socket Mode 연결 끊김 | room-agent 재시작 |
 | channel_not_found | 봇이 채널에 없음 | `/invite @room-agent` |

@@ -156,7 +156,7 @@ def _process_room_command(
             )
         elif available_rooms:
             # 예약 모드: 가용 회의실 버튼 표시
-            blocks = _build_available_rooms_message(
+            blocks = _build_query_result_message(
                 request, available_rooms, unavailable_rooms, channel_id
             )
             webhook.send(

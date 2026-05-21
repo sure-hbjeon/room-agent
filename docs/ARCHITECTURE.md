@@ -73,7 +73,8 @@ room-agent/
 │   ├── daou_automation.py   # 다우오피스 자동화 (Playwright)
 │   ├── calendar_sync.py     # Google Calendar 연동
 │   └── config.py            # 설정 관리
-├── config.yaml              # 설정 파일
+├── config.yaml              # 로컬 전용 설정 파일
+├── room_priority.yaml       # 공유 회의실 우선순위 설정
 ├── cookies.json             # 다우오피스 세션
 ├── credentials.json         # Google OAuth 클라이언트
 ├── token.json               # Google 인증 토큰
@@ -386,6 +387,7 @@ logs/qw-agent-YYYY-MM-DD.log
 ### 민감 정보 보호
 
 - `config.yaml`: API 토큰 (git 제외)
+- `room_priority.yaml`: 회의실 우선순위/row_key (git 포함)
 - `cookies.json`: 다우오피스 세션 (git 제외)
 - `credentials.json`: Google OAuth (git 제외)
 - `token.json`: Google 인증 (git 제외)
