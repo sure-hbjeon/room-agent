@@ -38,6 +38,10 @@ room_priority:
     name: 회의실 11-1
     capacity: 6
     row_key: 83
+  - id: 11-5
+    name: 회의실 11-5
+    capacity: 6
+    row_key: 153
 - tier: 2
   label: 10층
   floor_id: 26
